@@ -11,4 +11,14 @@ sequenceDiagram
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     server-->>browser: the DOM file
      
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server-->>browser: the css file
+    deactivate server
+    
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate server
+    server-->>browser: the javascript file
+    deactivate server
+    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
 ```
