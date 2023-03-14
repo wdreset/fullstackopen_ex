@@ -7,14 +7,14 @@ sequenceDiagram
     participant browser
     participant server
     
-    Note It is an HTTP POST request to the server address new_note. The server responds with HTTP status code 302. This is a URL redirect, with which the server asks the browser to do a new HTTP GET request to the address defined in the header's Location - the address notes.
+    Note over : It is an HTTP POST request to the server address new_note. The server responds with HTTP status code 302. This is a URL redirect, with which the server asks the browser to do a new HTTP GET request to the address defined in the header's Location - the address notes.
  
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
     browser-->>server: data : "note:sandwich"
 
     server->>browser: REDIRECT 302 /exampleapp/notes
 
-    Note the browser reloads the Notes page. The reload causes three more HTTP requests: fetching the style sheet (main.css), the JavaScript code (main.js), and the raw data of the notes (data.json).
+    Note over : the browser reloads the Notes page. The reload causes three more HTTP requests: fetching the style sheet (main.css), the JavaScript code (main.js), and the raw data of the notes (data.json).
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     server-->>browser: the DOM file
@@ -28,6 +28,7 @@ sequenceDiagram
     activate server
     server-->>browser: the javascript file
     deactivate server
+    
     Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
