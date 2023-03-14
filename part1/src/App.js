@@ -10,19 +10,19 @@ const Header = (props) => {
   return (
     <div>
       <p>
-        {props.course}      
+        {props.course.name}      
       </p>
     </div>
   )
 }
 
-// Content renders the parts and their number of exercises
+// Content renders the parts and their number of exercises 
 const Part = (props) => {
-  console.log("Part", props.ex.exercices)
+  console.log("Part", props)
   return (
     <div>
       <p>
-        {props.ex.name} {props.ex.exercices}
+      {props.part.name} {props.part.exercises}
       </p>
     </div> 
   )
@@ -33,9 +33,9 @@ const Content = (props) => {
   console.log("content",props)
   return (
     <div>
-      <Part ex={props.part[0]} />
-      <Part ex={props.part[1]} />
-      <Part ex={props.part[2]} />
+      <Part part={props.course.parts[0]} />
+      <Part part={props.course.parts[1]} />
+      <Part part={props.course.parts[2]} />
     </div> 
   )
 }
@@ -45,25 +45,37 @@ const Total = (props) => {
   console.log("total", props)
   return (
     <div>
-      <p>Number of exercises {props.totalex}</p>
+      <p>Number of exercises {props.course.parts[0].exercises + 
+      props.course.parts[1].exercises + props.course.parts[2].exercises}</p>
     </div> 
   )
 }
 
 const App = () => {
   // const-definitions
-  const course = 'Half Stack application development'
-  const partData = [
-    { name: 'Fundamentals of React', exercices: 4 },
-    { name: 'Using props to pass data', exercices: 10 },
-    { name: 'State of a component', exercices: 10 },
-  ]
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
 
   return (
     <div>
       <Header course={course} />
-      <Content part={partData}/>
-      <Total totalex={partData[0].exercices + partData[1].exercices + partData[2].exercices}/>
+      <Content course={course} />
+      <Total course={course} />
     </div>
   )
 }
