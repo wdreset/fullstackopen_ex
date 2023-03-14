@@ -16,7 +16,6 @@ sequenceDiagram
   
     server-->>browser: 201
 
-    Note right of browser : Creating a new note with "sandwich2". Only one request is sent to the server.
-    The note is added and displayed on the webpage
+    Note right of browser : Creating a new note with "sandwich2". Only one request is sent to the server.The note is added and displayed on the webpage
 
 ```
