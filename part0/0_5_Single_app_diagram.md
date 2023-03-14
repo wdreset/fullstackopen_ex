@@ -10,7 +10,7 @@ sequenceDiagram
     server-->>browser: HTML Document
     deactivate server
 
-    Note over : The browser retrieve the spa app form the server. The spa iniate three other requests.
+    Note right of browser : The browser retrieve the spa app form the server. The spa iniate three other requests.
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
     activate server
@@ -22,7 +22,7 @@ sequenceDiagram
     server-->>browser: Javascript file
     deactivate server
  
-    Note over : The js script create a request to fetch the json data. In the script code, we can see that the browser is in charge of processing the json data and displaying it.
+    Note right of browser : The js script create a request to fetch the json data. In the script code, we can see that the browser is in charge of processing the json data and displaying it.
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
